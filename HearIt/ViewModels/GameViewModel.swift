@@ -87,9 +87,12 @@ final class GameViewModel: ObservableObject {
         selectedIndex = nil
         timeRemaining = 30
         phase = .playing
-        // Only attempt real audio streaming when not in mock mode
-        if !NetworkService.shared.useMockData, let q = currentQuestion {
+        if let q = currentQuestion {
             audio.play(urlString: q.audioUrl)
+            // If no bundle file found, speak the hint so something always plays
+            if case .error = audio.state {
+                audio.speak(text: q.hintEn)
+            }
         }
         startTimer()
     }

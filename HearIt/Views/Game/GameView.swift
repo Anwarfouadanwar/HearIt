@@ -202,13 +202,8 @@ struct GameView: View {
         vm.currentQuestion?.answers ?? []
     }
 
-    // Animate waveform when question is live — in mock mode simulate with phase check
     private var waveformActive: Bool {
-        if NetworkService.shared.useMockData {
-            if case .playing = vm.phase { return true }
-            return false
-        }
-        return audio.state == .playing
+        audio.state == .playing
     }
 
     private func buttonState(for index: Int) -> AnswerButtonState {

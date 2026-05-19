@@ -25,6 +25,16 @@
 		AA0000000000000000000110 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000010 /* LeaderboardView.swift */; };
 		AA0000000000000000000111 /* RoundResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000011 /* RoundResultView.swift */; };
 		AA0000000000000000000112 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000012 /* Assets.xcassets */; };
+		AA0000000000000000000113 /* fairouz_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000015 /* fairouz_01.mp3 */; };
+		AA0000000000000000000114 /* umm_kulthum_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000016 /* umm_kulthum_01.mp3 */; };
+		AA0000000000000000000115 /* abdel_halim_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000017 /* abdel_halim_01.mp3 */; };
+		AA0000000000000000000116 /* amr_diab_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000018 /* amr_diab_01.mp3 */; };
+		AA0000000000000000000117 /* kadhem_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000019 /* kadhem_01.mp3 */; };
+		AA0000000000000000000118 /* majid_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001A /* majid_01.mp3 */; };
+		AA0000000000000000000119 /* warda_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001B /* warda_01.mp3 */; };
+		AA000000000000000000011A /* najwa_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001C /* najwa_01.mp3 */; };
+		AA000000000000000000011B /* mounir_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001D /* mounir_01.mp3 */; };
+		AA000000000000000000011C /* elissa_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001E /* elissa_01.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +58,16 @@
 		AA0000000000000000000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA0000000000000000000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA0000000000000000000014 /* HearIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000000000000000000015 /* fairouz_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fairouz_01.mp3; sourceTree = "<group>"; };
+		AA0000000000000000000016 /* umm_kulthum_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = umm_kulthum_01.mp3; sourceTree = "<group>"; };
+		AA0000000000000000000017 /* abdel_halim_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = abdel_halim_01.mp3; sourceTree = "<group>"; };
+		AA0000000000000000000018 /* amr_diab_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = amr_diab_01.mp3; sourceTree = "<group>"; };
+		AA0000000000000000000019 /* kadhem_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kadhem_01.mp3; sourceTree = "<group>"; };
+		AA000000000000000000001A /* majid_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = majid_01.mp3; sourceTree = "<group>"; };
+		AA000000000000000000001B /* warda_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = warda_01.mp3; sourceTree = "<group>"; };
+		AA000000000000000000001C /* najwa_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = najwa_01.mp3; sourceTree = "<group>"; };
+		AA000000000000000000001D /* mounir_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mounir_01.mp3; sourceTree = "<group>"; };
+		AA000000000000000000001E /* elissa_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elissa_01.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +100,7 @@
 				AA000000000000000000020D /* Utilities */,
 				AA0000000000000000000012 /* Assets.xcassets */,
 				AA0000000000000000000013 /* Info.plist */,
+				AA000000000000000000020F /* Audio */,
 			);
 			path = HearIt;
 			sourceTree = "<group>";
@@ -191,6 +212,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AA000000000000000000020F /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000000000000000000015 /* fairouz_01.mp3 */,
+				AA0000000000000000000016 /* umm_kulthum_01.mp3 */,
+				AA0000000000000000000017 /* abdel_halim_01.mp3 */,
+				AA0000000000000000000018 /* amr_diab_01.mp3 */,
+				AA0000000000000000000019 /* kadhem_01.mp3 */,
+				AA000000000000000000001A /* majid_01.mp3 */,
+				AA000000000000000000001B /* warda_01.mp3 */,
+				AA000000000000000000001C /* najwa_01.mp3 */,
+				AA000000000000000000001D /* mounir_01.mp3 */,
+				AA000000000000000000001E /* elissa_01.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -251,6 +289,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0000000000000000000112 /* Assets.xcassets in Resources */,
+				AA0000000000000000000113 /* fairouz_01.mp3 in Resources */,
+				AA0000000000000000000114 /* umm_kulthum_01.mp3 in Resources */,
+				AA0000000000000000000115 /* abdel_halim_01.mp3 in Resources */,
+				AA0000000000000000000116 /* amr_diab_01.mp3 in Resources */,
+				AA0000000000000000000117 /* kadhem_01.mp3 in Resources */,
+				AA0000000000000000000118 /* majid_01.mp3 in Resources */,
+				AA0000000000000000000119 /* warda_01.mp3 in Resources */,
+				AA000000000000000000011A /* najwa_01.mp3 in Resources */,
+				AA000000000000000000011B /* mounir_01.mp3 in Resources */,
+				AA000000000000000000011C /* elissa_01.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@ enum AudioState: Equatable {
     case error(String)
 }
 
-final class AudioService: ObservableObject {
+final class AudioService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     static let shared = AudioService()
 
     @Published var state: AudioState = .idle
@@ -15,20 +15,76 @@ final class AudioService: ObservableObject {
     private var player: AVPlayer?
     private var timeObserver: Any?
     private var cancellables = Set<AnyCancellable>()
+    private var synthesizer = AVSpeechSynthesizer()
 
-    private init() {
-        // Run off the main thread — setActive can briefly block UI if called inline
+    private override init() {
+        super.init()
+        synthesizer.delegate = self
         DispatchQueue.global(qos: .userInitiated).async {
             try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try? AVAudioSession.sharedInstance().setActive(true)
         }
     }
 
+    // MARK: - Public
+
     func play(urlString: String) {
+        if urlString.hasPrefix("bundle://") {
+            let name = String(urlString.dropFirst("bundle://".count))
+            playBundleFile(name: name)
+        } else {
+            playRemoteURL(urlString: urlString)
+        }
+    }
+
+    // Speaks text via TTS — used as fallback when no audio file is available
+    func speak(text: String, languageCode: String = "en-US") {
+        stop()
+        state = .playing
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: languageCode)
+        utterance.rate = 0.42
+        utterance.pitchMultiplier = 1.05
+        synthesizer.speak(utterance)
+    }
+
+    func replay() {
+        player?.seek(to: .zero)
+        player?.play()
+        state = .playing
+    }
+
+    func stop() {
+        synthesizer.stopSpeaking(at: .immediate)
+        if let obs = timeObserver { player?.removeTimeObserver(obs) }
+        player?.pause()
+        player = nil
+        state = .idle
+        progress = 0
+        cancellables.removeAll()
+    }
+
+    // MARK: - Private
+
+    private func playBundleFile(name: String) {
+        let extensions = ["mp3", "m4a", "aac", "wav"]
+        let url = extensions.compactMap { Bundle.main.url(forResource: name, withExtension: $0) }.first
+        guard let url else {
+            state = .error("not found: \(name)")
+            return
+        }
+        playURL(url)
+    }
+
+    private func playRemoteURL(urlString: String) {
         guard let url = URL(string: urlString) else {
             state = .error("Invalid URL")
             return
         }
+        playURL(url)
+    }
+
+    private func playURL(_ url: URL) {
         stop()
         state = .loading
 
@@ -63,18 +119,9 @@ final class AudioService: ObservableObject {
         }
     }
 
-    func replay() {
-        player?.seek(to: .zero)
-        player?.play()
-        state = .playing
-    }
+    // MARK: - AVSpeechSynthesizerDelegate
 
-    func stop() {
-        if let obs = timeObserver { player?.removeTimeObserver(obs) }
-        player?.pause()
-        player = nil
-        state = .idle
-        progress = 0
-        cancellables.removeAll()
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async { self.state = .finished }
     }
 }

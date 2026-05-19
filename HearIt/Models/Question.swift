@@ -30,7 +30,7 @@ struct Question: Codable, Identifiable {
     static let mock: [Question] = [
         Question(
             id: "q1",
-            audioUrl: "https://cdn.hearitapp.com/audio/fairouz_01.mp3",
+            audioUrl: "bundle://fairouz_01",
             answers: [
                 Answer(id: "a1", textEn: "Fairouz",     textAr: "فيروز"),
                 Answer(id: "a2", textEn: "Warda",       textAr: "وردة"),
@@ -42,7 +42,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q2",
-            audioUrl: "https://cdn.hearitapp.com/audio/umm_kulthum_01.mp3",
+            audioUrl: "bundle://umm_kulthum_01",
             answers: [
                 Answer(id: "a1", textEn: "Fairouz",     textAr: "فيروز"),
                 Answer(id: "a2", textEn: "Warda",       textAr: "وردة"),
@@ -54,7 +54,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q3",
-            audioUrl: "https://cdn.hearitapp.com/audio/abdel_halim_01.mp3",
+            audioUrl: "bundle://abdel_halim_01",
             answers: [
                 Answer(id: "a1", textEn: "Abdel Halim Hafez", textAr: "عبد الحليم حافظ"),
                 Answer(id: "a2", textEn: "Mohamed Mounir",   textAr: "محمد منير"),
@@ -66,7 +66,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q4",
-            audioUrl: "https://cdn.hearitapp.com/audio/amr_diab_01.mp3",
+            audioUrl: "bundle://amr_diab_01",
             answers: [
                 Answer(id: "a1", textEn: "Tamer Hosny",  textAr: "تامر حسني"),
                 Answer(id: "a2", textEn: "Amr Diab",    textAr: "عمرو دياب"),
@@ -78,7 +78,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q5",
-            audioUrl: "https://cdn.hearitapp.com/audio/kadhem_01.mp3",
+            audioUrl: "bundle://kadhem_01",
             answers: [
                 Answer(id: "a1", textEn: "Kadhem Al Saher",  textAr: "كاظم الساهر"),
                 Answer(id: "a2", textEn: "Ilham Al Madfai",  textAr: "إلهام المدفعي"),
@@ -90,7 +90,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q6",
-            audioUrl: "https://cdn.hearitapp.com/audio/majid_01.mp3",
+            audioUrl: "bundle://majid_01",
             answers: [
                 Answer(id: "a1", textEn: "Rashed Al Majid",  textAr: "راشد الماجد"),
                 Answer(id: "a2", textEn: "Ahlam",            textAr: "أحلام"),
@@ -102,7 +102,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q7",
-            audioUrl: "https://cdn.hearitapp.com/audio/warda_01.mp3",
+            audioUrl: "bundle://warda_01",
             answers: [
                 Answer(id: "a1", textEn: "Najwa Karam",  textAr: "نجوى كرم"),
                 Answer(id: "a2", textEn: "Warda",        textAr: "وردة"),
@@ -114,7 +114,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q8",
-            audioUrl: "https://cdn.hearitapp.com/audio/najwa_01.mp3",
+            audioUrl: "bundle://najwa_01",
             answers: [
                 Answer(id: "a1", textEn: "Elissa",      textAr: "إليسا"),
                 Answer(id: "a2", textEn: "Najwa Karam", textAr: "نجوى كرم"),
@@ -126,7 +126,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q9",
-            audioUrl: "https://cdn.hearitapp.com/audio/mounir_01.mp3",
+            audioUrl: "bundle://mounir_01",
             answers: [
                 Answer(id: "a1", textEn: "Mohamed Mounir", textAr: "محمد منير"),
                 Answer(id: "a2", textEn: "Hamid Al Shaeri", textAr: "حميد الشاعري"),
@@ -138,7 +138,7 @@ struct Question: Codable, Identifiable {
         ),
         Question(
             id: "q10",
-            audioUrl: "https://cdn.hearitapp.com/audio/elissa_01.mp3",
+            audioUrl: "bundle://elissa_01",
             answers: [
                 Answer(id: "a1", textEn: "Nancy Ajram",  textAr: "نانسي عجرم"),
                 Answer(id: "a2", textEn: "Elissa",       textAr: "إليسا"),
