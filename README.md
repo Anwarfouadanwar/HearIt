@@ -30,7 +30,8 @@ HearIt/
     │   └── Leaderboard/LeaderboardView  Global rankings
     ├── Services/
     │   ├── NetworkService.swift      API calls (mock-ready)
-    │   └── AudioService.swift        AVPlayer wrapper for streaming
+    │   └── AudioService.swift        AVPlayer + TTS fallback
+    ├── Audio/                        Local MP3s for dev/testing
     └── Utilities/
         └── Extensions.swift         Color(hex:), clockString, cardStyle
 ```
@@ -39,34 +40,12 @@ HearIt/
 
 ## Xcode Setup
 
-1. Open Xcode → **File > New > Project** → iOS App
-2. Set **Product Name** to `HearIt`, interface `SwiftUI`, language `Swift`
-3. Delete the generated `ContentView.swift`
-4. In Finder, drag all folders from `HearIt/HearIt/` into the Xcode project navigator (check **"Copy items if needed"** and **"Create groups"**)
-5. Select the project target → **Signing & Capabilities** → set your Team
-6. Build & Run on an iPhone simulator (iOS 17+)
+1. Clone the repo and open `HearIt.xcodeproj`
+2. Select the project target → **Signing & Capabilities** → set your Team
+3. Build & Run on a physical iPhone (iOS 17+)
 
----
-
-## Connecting a Real Backend
-
-Edit `NetworkService.swift`:
-
-```swift
-private let baseURL = "https://your-api.hearitapp.com/v1"
-var useMockData = false   // ← flip this
-```
-
-### Expected API Endpoints
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/categories` | Returns `[Category]` |
-| GET | `/questions?categoryId=&count=` | Returns `[Question]` |
-| GET | `/leaderboard?categoryId=&limit=` | Returns `[LeaderboardEntry]` |
-| POST | `/scores` | Accepts `ScoreSubmission`, returns `ScoreResponse` |
-
-See the model files for full JSON shapes.
+> Audio files in `HearIt/Audio/` are placeholder tones for local testing.
+> Replace them with real clips or connect the backend to hear real audio.
 
 ---
 
@@ -76,13 +55,6 @@ See the model files for full JSON shapes.
 - **Points earned = seconds remaining** when the correct answer is tapped
 - Max possible = 30 pts × 10 questions = **300 points per round**
 - Wrong answer or time expired = 0 points
-
----
-
-## Adding Real Audio
-
-Replace `audioUrl` in `Question.mock` (or your backend) with actual MP3/AAC URLs.
-`AudioService` streams them via `AVPlayer` — any HTTPS URL works.
 
 ---
 
@@ -98,3 +70,70 @@ Replace `audioUrl` in `Question.mock` (or your backend) with actual MP3/AAC URLs
 | `nature` | Nature Sounds | أصوات الطبيعة |
 | `sports` | Sports | رياضة |
 | `intl-singers` | World Singers | مطربون عالميون |
+
+---
+
+## Production Roadmap
+
+### Backend
+
+- [ ] Set up API server (Node/Express or Supabase)
+- [ ] `GET /categories` — returns all categories
+- [ ] `GET /questions?categoryId=&count=` — returns shuffled questions with audio URLs
+- [ ] `POST /scores` — accepts score submission, returns rank
+- [ ] `GET /leaderboard?categoryId=&limit=` — returns top scores
+- [ ] Audio files hosted on a CDN (Supabase Storage / Cloudflare R2 / S3)
+- [ ] Flip `NetworkService.useMockData = false` and update `baseURL`
+
+### Content
+
+- [ ] Record or license real audio clips for Arab Singers (10 clips)
+- [ ] Add clips for remaining 7 categories (animals, instruments, car engines, languages, nature, sports, world singers)
+- [ ] Arabic TTS or voice-over for category intros (optional)
+
+### App Polish
+
+- [ ] App icon (all required sizes)
+- [ ] Launch screen / splash
+- [ ] Onboarding screen — enter player name before first game
+- [ ] Leaderboard screen wired to real backend data
+- [ ] Push notifications — "New category available!", daily challenge
+- [ ] Haptic patterns for correct/wrong answers (already partial)
+- [ ] Sound effects for UI interactions (button taps, round complete)
+- [ ] Streak / combo multiplier mechanic (bonus points for consecutive correct answers)
+
+### App Store
+
+- [ ] Bundle ID confirmed: `com.hearit.app`
+- [ ] Provisioning profile + distribution certificate
+- [ ] App Store Connect listing (name, description, keywords in AR + EN)
+- [ ] Screenshots in Arabic and English (6.5" and 5.5")
+- [ ] Privacy policy URL (required for App Store)
+- [ ] Age rating questionnaire
+
+---
+
+## Connecting the Backend
+
+Edit `NetworkService.swift`:
+
+```swift
+private let baseURL = "https://your-api.hearitapp.com/v1"
+var useMockData = false   // ← flip this
+```
+
+### Expected API Shapes
+
+**GET /categories** → `[Category]`
+```json
+[{ "id": "arab-singers", "nameEn": "Arab Singers", "nameAr": "مطربون عرب", "icon": "🎤", "color": "#9B59B6", "totalQuestions": 10 }]
+```
+
+**GET /questions?categoryId=arab-singers&count=10** → `[Question]`
+```json
+[{ "id": "q1", "audioUrl": "https://cdn.hearitapp.com/audio/fairouz_01.mp3", "answers": [...], "correctIndex": 0, "categoryId": "arab-singers", "hintEn": "Lebanese icon", "hintAr": "أيقونة لبنانية" }]
+```
+
+**POST /scores** body: `{ "playerName", "categoryId", "score", "questionsAnswered" }`
+
+**GET /leaderboard?categoryId=arab-singers&limit=20** → `[LeaderboardEntry]`
