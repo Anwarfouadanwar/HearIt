@@ -29,8 +29,9 @@ struct CategorySelectionView: View {
 
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(categories) { cat in
-                                CategoryCard(category: cat)
-                                    .onTapGesture { selected = cat }
+                                CategoryCard(category: cat) {
+                                    selected = cat
+                                }
                             }
                         }
                     }
@@ -61,48 +62,54 @@ struct CategorySelectionView: View {
 
 struct CategoryCard: View {
     let category: Category
+    let action: () -> Void
     @EnvironmentObject var appState: AppState
-    @State private var pressed = false
 
     var body: some View {
-        VStack(spacing: 14) {
-            Text(category.icon)
-                .font(.system(size: 52))
+        Button(action: action) {
+            VStack(spacing: 14) {
+                Text(category.icon)
+                    .font(.system(size: 52))
 
-            Text(category.displayName(for: appState.language))
-                .font(.headline)
-                .foregroundStyle(.white)
-                .multilineTextAlignment(.center)
-                .lineLimit(2)
-                .minimumScaleFactor(0.8)
+                Text(category.displayName(for: appState.language))
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
 
-            Text(appState.str("\(category.totalQuestions) Q's", "\(category.totalQuestions) سؤال"))
-                .font(.caption)
-                .foregroundStyle(.white.opacity(0.55))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 26)
-        .padding(.horizontal, 10)
-        .background(
-            RoundedRectangle(cornerRadius: 22)
-                .fill(
-                    LinearGradient(
-                        colors: [category.color.opacity(0.65), category.color.opacity(0.25)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
+                Text(appState.str("\(category.totalQuestions) Q's", "\(category.totalQuestions) سؤال"))
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.55))
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 26)
+            .padding(.horizontal, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 22)
+                    .fill(
+                        LinearGradient(
+                            colors: [category.color.opacity(0.65), category.color.opacity(0.25)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
-                )
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(category.color.opacity(0.45), lineWidth: 1)
-        )
-        .scaleEffect(pressed ? 0.94 : 1)
-        .animation(.spring(response: 0.25), value: pressed)
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 0)
-                .onChanged { _ in pressed = true }
-                .onEnded { _ in pressed = false }
-        )
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 22)
+                    .stroke(category.color.opacity(0.45), lineWidth: 1)
+            )
+        }
+        .buttonStyle(CardPressStyle())
+    }
+}
+
+// MARK: - Press animation via ButtonStyle (no gesture conflicts)
+
+struct CardPressStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.94 : 1)
+            .animation(.spring(response: 0.25, dampingFraction: 0.7), value: configuration.isPressed)
     }
 }
