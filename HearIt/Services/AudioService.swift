@@ -17,8 +17,11 @@ final class AudioService: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     private init() {
-        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-        try? AVAudioSession.sharedInstance().setActive(true)
+        // Run off the main thread — setActive can briefly block UI if called inline
+        DispatchQueue.global(qos: .userInitiated).async {
+            try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try? AVAudioSession.sharedInstance().setActive(true)
+        }
     }
 
     func play(urlString: String) {

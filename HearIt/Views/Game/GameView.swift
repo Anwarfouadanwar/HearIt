@@ -137,7 +137,8 @@ struct GameView: View {
 
                 VStack(spacing: 16) {
                     // Waveform animation
-                    WaveformView(isPlaying: audio.state == .playing)
+                    // In mock mode there is no real audio, so animate whenever a question is active
+                    WaveformView(isPlaying: waveformActive)
                         .frame(height: 60)
 
                     HStack(spacing: 16) {
@@ -199,6 +200,15 @@ struct GameView: View {
 
     private var currentAnswers: [Answer] {
         vm.currentQuestion?.answers ?? []
+    }
+
+    // Animate waveform when question is live — in mock mode simulate with phase check
+    private var waveformActive: Bool {
+        if NetworkService.shared.useMockData {
+            if case .playing = vm.phase { return true }
+            return false
+        }
+        return audio.state == .playing
     }
 
     private func buttonState(for index: Int) -> AnswerButtonState {
