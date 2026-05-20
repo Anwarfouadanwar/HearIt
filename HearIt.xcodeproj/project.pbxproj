@@ -35,6 +35,16 @@
 		AA000000000000000000011A /* najwa_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001C /* najwa_01.mp3 */; };
 		AA000000000000000000011B /* mounir_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001D /* mounir_01.mp3 */; };
 		AA000000000000000000011C /* elissa_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001E /* elissa_01.mp3 */; };
+		AA000000000000000000011D /* lion_01.mp3 in Resources */     = {isa = PBXBuildFile; fileRef = AA000000000000000000001F /* lion_01.mp3 */; };
+		AA000000000000000000011E /* elephant_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000020 /* elephant_01.mp3 */; };
+		AA000000000000000000011F /* wolf_01.mp3 in Resources */     = {isa = PBXBuildFile; fileRef = AA0000000000000000000021 /* wolf_01.mp3 */; };
+		AA0000000000000000000120 /* cat_01.mp3 in Resources */      = {isa = PBXBuildFile; fileRef = AA0000000000000000000022 /* cat_01.mp3 */; };
+		AA0000000000000000000121 /* frog_01.mp3 in Resources */     = {isa = PBXBuildFile; fileRef = AA0000000000000000000023 /* frog_01.mp3 */; };
+		AA0000000000000000000122 /* rooster_01.mp3 in Resources */  = {isa = PBXBuildFile; fileRef = AA0000000000000000000024 /* rooster_01.mp3 */; };
+		AA0000000000000000000123 /* dolphin_01.mp3 in Resources */  = {isa = PBXBuildFile; fileRef = AA0000000000000000000025 /* dolphin_01.mp3 */; };
+		AA0000000000000000000124 /* dog_01.mp3 in Resources */      = {isa = PBXBuildFile; fileRef = AA0000000000000000000026 /* dog_01.mp3 */; };
+		AA0000000000000000000125 /* eagle_01.mp3 in Resources */    = {isa = PBXBuildFile; fileRef = AA0000000000000000000027 /* eagle_01.mp3 */; };
+		AA0000000000000000000126 /* snake_01.mp3 in Resources */    = {isa = PBXBuildFile; fileRef = AA0000000000000000000028 /* snake_01.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +77,17 @@
 		AA000000000000000000001B /* warda_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = warda_01.mp3; sourceTree = "<group>"; };
 		AA000000000000000000001C /* najwa_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = najwa_01.mp3; sourceTree = "<group>"; };
 		AA000000000000000000001D /* mounir_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mounir_01.mp3; sourceTree = "<group>"; };
-		AA000000000000000000001E /* elissa_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elissa_01.mp3; sourceTree = "<group>"; };
+		AA000000000000000000001E /* elissa_01.mp3 */   = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elissa_01.mp3;   sourceTree = "<group>"; };
+		AA000000000000000000001F /* lion_01.mp3 */     = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lion_01.mp3;     sourceTree = "<group>"; };
+		AA0000000000000000000020 /* elephant_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elephant_01.mp3; sourceTree = "<group>"; };
+		AA0000000000000000000021 /* wolf_01.mp3 */     = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wolf_01.mp3;     sourceTree = "<group>"; };
+		AA0000000000000000000022 /* cat_01.mp3 */      = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cat_01.mp3;      sourceTree = "<group>"; };
+		AA0000000000000000000023 /* frog_01.mp3 */     = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frog_01.mp3;     sourceTree = "<group>"; };
+		AA0000000000000000000024 /* rooster_01.mp3 */  = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rooster_01.mp3;  sourceTree = "<group>"; };
+		AA0000000000000000000025 /* dolphin_01.mp3 */  = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dolphin_01.mp3;  sourceTree = "<group>"; };
+		AA0000000000000000000026 /* dog_01.mp3 */      = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_01.mp3;      sourceTree = "<group>"; };
+		AA0000000000000000000027 /* eagle_01.mp3 */    = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = eagle_01.mp3;    sourceTree = "<group>"; };
+		AA0000000000000000000028 /* snake_01.mp3 */    = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snake_01.mp3;    sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +245,16 @@
 				AA000000000000000000001C /* najwa_01.mp3 */,
 				AA000000000000000000001D /* mounir_01.mp3 */,
 				AA000000000000000000001E /* elissa_01.mp3 */,
+				AA000000000000000000001F /* lion_01.mp3 */,
+				AA0000000000000000000020 /* elephant_01.mp3 */,
+				AA0000000000000000000021 /* wolf_01.mp3 */,
+				AA0000000000000000000022 /* cat_01.mp3 */,
+				AA0000000000000000000023 /* frog_01.mp3 */,
+				AA0000000000000000000024 /* rooster_01.mp3 */,
+				AA0000000000000000000025 /* dolphin_01.mp3 */,
+				AA0000000000000000000026 /* dog_01.mp3 */,
+				AA0000000000000000000027 /* eagle_01.mp3 */,
+				AA0000000000000000000028 /* snake_01.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -299,6 +329,16 @@
 				AA000000000000000000011A /* najwa_01.mp3 in Resources */,
 				AA000000000000000000011B /* mounir_01.mp3 in Resources */,
 				AA000000000000000000011C /* elissa_01.mp3 in Resources */,
+				AA000000000000000000011D /* lion_01.mp3 in Resources */,
+				AA000000000000000000011E /* elephant_01.mp3 in Resources */,
+				AA000000000000000000011F /* wolf_01.mp3 in Resources */,
+				AA0000000000000000000120 /* cat_01.mp3 in Resources */,
+				AA0000000000000000000121 /* frog_01.mp3 in Resources */,
+				AA0000000000000000000122 /* rooster_01.mp3 in Resources */,
+				AA0000000000000000000123 /* dolphin_01.mp3 in Resources */,
+				AA0000000000000000000124 /* dog_01.mp3 in Resources */,
+				AA0000000000000000000125 /* eagle_01.mp3 in Resources */,
+				AA0000000000000000000126 /* snake_01.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
